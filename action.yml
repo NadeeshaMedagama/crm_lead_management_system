@@ -1,0 +1,35 @@
+name: "CRM CI Helper"
+description: "Run backend and frontend tests for the CRM Lead Management System."
+author: "CRM Team"
+branding:
+  icon: "check-circle"
+  color: "blue"
+inputs:
+  node-version:
+    description: "Node.js version to use"
+    required: false
+    default: "20"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: "npm"
+        cache-dependency-path: |
+          backend/package-lock.json
+          frontend/package-lock.json
+    - name: Install backend dependencies
+      shell: bash
+      run: npm ci --prefix backend
+    - name: Install frontend dependencies
+      shell: bash
+      run: npm ci --prefix frontend
+    - name: Run backend tests
+      shell: bash
+      run: npm test --prefix backend
+    - name: Run frontend tests
+      shell: bash
+      run: npm test --prefix frontend
+
