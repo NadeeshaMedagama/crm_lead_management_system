@@ -10,13 +10,13 @@ permissions:
 
 jobs:
   enable-automerge:
-    if: github.actor == 'dependabot[bot]'
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: dependabot/fetch-metadata@v2
         id: metadata
+
       - name: Enable auto-merge
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           merge-method: squash
-
