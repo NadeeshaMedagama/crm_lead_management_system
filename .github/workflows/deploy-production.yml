@@ -1,0 +1,71 @@
+name: Deploy Production Workflow
+
+on:
+  workflow_run:
+    workflows:
+      - Publish Images to DockerHub
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Image tag to deploy (for example: v1.2.3)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    if: "github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: Production
+    env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+      - name: Resolve image tag
+        id: tag
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "value=${{ inputs.image_tag }}" >> "$GITHUB_OUTPUT"
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git fetch --force --tags
+          TAG="$(git tag --points-at HEAD | head -n1)"
+
+          if [[ -z "$TAG" ]]; then
+            echo "No git tag found for this commit. Skipping deployment."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=$TAG" >> "$GITHUB_OUTPUT"
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Skip when commit is not tagged
+        if: steps.tag.outputs.skip == 'true'
+        run: 'echo "Skipped: No tag found for this commit."'
+      - name: Docker login
+        if: steps.tag.outputs.skip != 'true'
+        run: |
+          echo "${DOCKERHUB_PASSWORD}" | docker login -u "${DOCKERHUB_USERNAME}" --password-stdin
+      - name: Set image tag
+        if: steps.tag.outputs.skip != 'true'
+        run: echo "IMAGE_TAG=${{ steps.tag.outputs.value }}" >> $GITHUB_ENV
+      - name: Run docker compose (test deploy)
+        if: steps.tag.outputs.skip != 'true'
+        run: |
+          docker compose pull || true
+          docker compose up -d --build
+      - name: Verify containers
+        if: steps.tag.outputs.skip != 'true'
+        run: docker ps
