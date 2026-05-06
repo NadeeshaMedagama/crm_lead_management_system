@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  backend:
+    image: "${DOCKERHUB_USERNAME}/crm-backend:${IMAGE_TAG:-latest}"
+    ports:
+      - "5001:5001"
+    environment:
+      MONGO_URI: "${MONGO_URI}"
+      JWT_SECRET: "${JWT_SECRET}"
+      JWT_EXPIRES_IN: "${JWT_EXPIRES_IN:-1d}"
+      PORT: "5001"
+
+  frontend:
+    image: "${DOCKERHUB_USERNAME}/crm-frontend:${IMAGE_TAG:-latest}"
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: "${NEXT_PUBLIC_API_BASE_URL}"
+    depends_on:
+      - backend
+
