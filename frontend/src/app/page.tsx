@@ -16,6 +16,13 @@ import {
 import { LEAD_SOURCES, LEAD_STATUSES } from "@/lib/constants";
 import { DashboardStats, Lead, LeadSource, LeadStatus } from "@/types/crm";
 
+type LeadFilters = {
+  status: LeadStatus | "";
+  leadSource: LeadSource | "";
+  assignedSalesperson: string;
+  search: string;
+};
+
 const emptyStats: DashboardStats = {
   totalLeads: 0,
   newLeads: 0,
@@ -49,7 +56,7 @@ export default function Home() {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [noteText, setNoteText] = useState("");
   const [notes, setNotes] = useState<{ content: string; createdBy: string; createdAt: string }[]>([]);
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<LeadFilters>({
     status: "",
     leadSource: "",
     assignedSalesperson: "",
@@ -61,7 +68,7 @@ export default function Home() {
     [leads]
   );
 
-  const loadData = useCallback(async (nextFilters = filters) => {
+  const loadData = useCallback(async (nextFilters: LeadFilters = filters) => {
     try {
       const [leadData, dashboardData] = await Promise.all([getLeads(nextFilters), getDashboard()]);
       setLeads(leadData);
@@ -280,11 +287,11 @@ export default function Home() {
           <h2 className="mb-3 text-lg font-semibold">Leads</h2>
           <div className="mb-4 grid gap-2 md:grid-cols-4">
             <input className="rounded-lg border border-slate-700 bg-slate-950 p-2" placeholder="Search name, company, email" value={filters.search} onChange={(e) => setFilters({ ...filters, search: e.target.value })} />
-            <select className="rounded-lg border border-slate-700 bg-slate-950 p-2" value={filters.status} onChange={(e) => setFilters({ ...filters, status: e.target.value })}>
+            <select className="rounded-lg border border-slate-700 bg-slate-950 p-2" value={filters.status} onChange={(e) => setFilters({ ...filters, status: e.target.value as LeadStatus | "" })}>
               <option value="">All statuses</option>
               {LEAD_STATUSES.map((status) => <option key={status}>{status}</option>)}
             </select>
-            <select className="rounded-lg border border-slate-700 bg-slate-950 p-2" value={filters.leadSource} onChange={(e) => setFilters({ ...filters, leadSource: e.target.value })}>
+            <select className="rounded-lg border border-slate-700 bg-slate-950 p-2" value={filters.leadSource} onChange={(e) => setFilters({ ...filters, leadSource: e.target.value as LeadSource | "" })}>
               <option value="">All sources</option>
               {LEAD_SOURCES.map((source) => <option key={source}>{source}</option>)}
             </select>
