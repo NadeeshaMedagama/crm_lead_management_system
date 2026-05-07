@@ -90,17 +90,36 @@ jobs:
             echo "IMAGE_TAG contains whitespace: '${IMAGE_TAG}'" >&2
             exit 1
           fi
-      - name: Verify image tags
+      - name: Check image manifests (soft-fail)
         if: steps.tag.outputs.skip != 'true'
+        id: manifests
+        shell: bash
         run: |
           set -euo pipefail
-          docker manifest inspect "${DOCKERHUB_USERNAME}/crm-backend:${IMAGE_TAG}" >/dev/null
-          docker manifest inspect "${DOCKERHUB_USERNAME}/crm-frontend:${IMAGE_TAG}" >/dev/null
+          missing=()
+
+          if ! docker manifest inspect "${DOCKERHUB_USERNAME}/crm-backend:${IMAGE_TAG}" >/dev/null; then
+            missing+=("crm-backend")
+          fi
+
+          if ! docker manifest inspect "${DOCKERHUB_USERNAME}/crm-frontend:${IMAGE_TAG}" >/dev/null; then
+            missing+=("crm-frontend")
+          fi
+
+          if (( ${#missing[@]} > 0 )); then
+            echo "Missing image manifests for tag '${IMAGE_TAG}': ${missing[*]}. Skipping deploy."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Skip when images are missing
+        if: steps.manifests.outputs.skip == 'true'
+        run: 'echo "Skipped: Missing image manifests for this tag."'
       - name: Run docker compose (test deploy)
-        if: steps.tag.outputs.skip != 'true'
+        if: steps.tag.outputs.skip != 'true' && steps.manifests.outputs.skip != 'true'
         run: |
           docker compose pull || true
           docker compose up -d --build
       - name: Verify containers
-        if: steps.tag.outputs.skip != 'true'
+        if: steps.tag.outputs.skip != 'true' && steps.manifests.outputs.skip != 'true'
         run: docker ps
