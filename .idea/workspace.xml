@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b9f2872-161e-4b0c-9e21-1605fbe39827" name="Changes" comment="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-production.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-production.yml" afterDir="false" />
+    <list default="true" id="6b9f2872-161e-4b0c-9e21-1605fbe39827" name="Changes" comment="added a soft-fail manifest check that skips the deploy">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/release.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1778040823328</updated>
       <workItem from="1778040824595" duration="1359000" />
-      <workItem from="1778136992309" duration="3868000" />
+      <workItem from="1778136992309" duration="6194000" />
     </task>
     <task id="LOCAL-00004" summary=".idea workspace xml file added">
       <option name="closed" value="true" />
@@ -192,7 +192,23 @@
       <option name="project" value="LOCAL" />
       <updated>1778140770999</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="updated the deploy workflow to sanitize the input tag and validate the env">
+      <option name="closed" value="true" />
+      <created>1778141208848</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1778141208848</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added a soft-fail manifest check that skips the deploy">
+      <option name="closed" value="true" />
+      <created>1778142949325</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1778142949325</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +222,9 @@
     <MESSAGE value="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy" />
     <MESSAGE value="fixed the workflow by adding the required pull-request-number input" />
     <MESSAGE value="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows" />
+    <MESSAGE value="updated the deploy workflow to sanitize the input tag and validate the env" />
+    <MESSAGE value="added a soft-fail manifest check that skips the deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a soft-fail manifest check that skips the deploy" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
