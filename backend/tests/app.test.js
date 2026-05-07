@@ -54,6 +54,11 @@ describe("Auth", () => {
 });
 
 describe("Leads and Dashboard", () => {
+  it("rejects lead access without Authorization token", async () => {
+    const res = await request(app).get("/api/leads");
+    expect(res.statusCode).toBe(401);
+  });
+
   it("creates, updates, adds note, and deletes lead", async () => {
     const createRes = await request(app)
       .post("/api/leads")
@@ -62,6 +67,9 @@ describe("Leads and Dashboard", () => {
 
     expect(createRes.statusCode).toBe(201);
     const leadId = createRes.body._id;
+    expect(createRes.body.createdAt).toBeDefined();
+    expect(createRes.body.updatedAt).toBeDefined();
+    const initialUpdatedAt = new Date(createRes.body.updatedAt).toISOString();
 
     const statusRes = await request(app)
       .patch(`/api/leads/${leadId}/status`)
@@ -70,6 +78,10 @@ describe("Leads and Dashboard", () => {
 
     expect(statusRes.statusCode).toBe(200);
     expect(statusRes.body.status).toBe("Qualified");
+    expect(statusRes.body.updatedAt).toBeDefined();
+    // updatedAt should move forward when status changes
+    const nextUpdatedAt = new Date(statusRes.body.updatedAt).toISOString();
+    expect(nextUpdatedAt === initialUpdatedAt).toBe(false);
 
     const noteRes = await request(app)
       .post(`/api/leads/${leadId}/notes`)
@@ -78,6 +90,8 @@ describe("Leads and Dashboard", () => {
 
     expect(noteRes.statusCode).toBe(201);
     expect(noteRes.body.content).toContain("interested");
+    expect(noteRes.body.createdBy).toBeDefined();
+    expect(noteRes.body.createdAt).toBeDefined();
 
     const detailRes = await request(app)
       .get(`/api/leads/${leadId}`)
