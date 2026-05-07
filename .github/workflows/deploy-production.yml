@@ -26,6 +26,10 @@ jobs:
     env:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      JWT_EXPIRES_IN: ${{ vars.JWT_EXPIRES_IN }}
+      NEXT_PUBLIC_API_BASE_URL: ${{ vars.NEXT_PUBLIC_API_BASE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -61,6 +65,12 @@ jobs:
       - name: Set image tag
         if: steps.tag.outputs.skip != 'true'
         run: echo "IMAGE_TAG=${{ steps.tag.outputs.value }}" >> $GITHUB_ENV
+      - name: Verify image tags
+        if: steps.tag.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+          docker manifest inspect "${DOCKERHUB_USERNAME}/crm-backend:${IMAGE_TAG}" >/dev/null
+          docker manifest inspect "${DOCKERHUB_USERNAME}/crm-frontend:${IMAGE_TAG}" >/dev/null
       - name: Run docker compose (test deploy)
         if: steps.tag.outputs.skip != 'true'
         run: |
