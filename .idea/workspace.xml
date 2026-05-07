@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b9f2872-161e-4b0c-9e21-1605fbe39827" name="Changes" comment="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/dependabot-auto-merge.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/dependabot-auto-merge.yml" afterDir="false" />
+    <list default="true" id="6b9f2872-161e-4b0c-9e21-1605fbe39827" name="Changes" comment="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows">
       <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-production.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-production.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1778040823328</updated>
       <workItem from="1778040824595" duration="1359000" />
-      <workItem from="1778136992309" duration="1367000" />
+      <workItem from="1778136992309" duration="3868000" />
     </task>
     <task id="LOCAL-00004" summary=".idea workspace xml file added">
       <option name="closed" value="true" />
@@ -161,7 +160,39 @@
       <option name="project" value="LOCAL" />
       <updated>1778137995118</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy">
+      <option name="closed" value="true" />
+      <created>1778138368392</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1778138368392</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fixed the workflow by adding the required pull-request-number input">
+      <option name="closed" value="true" />
+      <created>1778138633321</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1778138633321</updated>
+    </task>
+    <task id="LOCAL-00012" summary="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows">
+      <option name="closed" value="true" />
+      <created>1778140762176</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1778140762176</updated>
+    </task>
+    <task id="LOCAL-00013" summary="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows">
+      <option name="closed" value="true" />
+      <created>1778140770999</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1778140770999</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +204,9 @@
     <MESSAGE value=".idea workspace xml file added" />
     <MESSAGE value="fixed the frontend build TypeScript filter typing issue" />
     <MESSAGE value="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy" />
+    <MESSAGE value="fixed the workflow by adding the required pull-request-number input" />
+    <MESSAGE value="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

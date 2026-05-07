@@ -36,13 +36,24 @@ jobs:
         shell: bash
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "value=${{ inputs.image_tag }}" >> "$GITHUB_OUTPUT"
+            TAG="${{ inputs.image_tag }}"
+            TAG="${TAG#refs/tags/}"
+            TAG="$(echo "$TAG" | xargs)"
+
+            if [[ -z "$TAG" ]]; then
+              echo "Image tag is empty. Provide a non-empty tag (for example: v1.2.3)." >&2
+              exit 1
+            fi
+
+            echo "value=$TAG" >> "$GITHUB_OUTPUT"
             echo "skip=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
           git fetch --force --tags
           TAG="$(git tag --points-at HEAD | head -n1)"
+          TAG="${TAG#refs/tags/}"
+          TAG="$(echo "$TAG" | xargs)"
 
           if [[ -z "$TAG" ]]; then
             echo "No git tag found for this commit. Skipping deployment."
@@ -61,6 +72,24 @@ jobs:
       - name: Set image tag
         if: steps.tag.outputs.skip != 'true'
         run: echo "IMAGE_TAG=${{ steps.tag.outputs.value }}" >> $GITHUB_ENV
+      - name: Validate image reference inputs
+        if: steps.tag.outputs.skip != 'true'
+        shell: bash
+        run: |
+          if [[ -z "${DOCKERHUB_USERNAME}" ]]; then
+            echo "DOCKERHUB_USERNAME is empty. Check repository or environment secrets." >&2
+            exit 1
+          fi
+
+          if [[ -z "${IMAGE_TAG}" ]]; then
+            echo "IMAGE_TAG is empty. Tag resolution failed." >&2
+            exit 1
+          fi
+
+          if [[ "${IMAGE_TAG}" =~ [[:space:]] ]]; then
+            echo "IMAGE_TAG contains whitespace: '${IMAGE_TAG}'" >&2
+            exit 1
+          fi
       - name: Verify image tags
         if: steps.tag.outputs.skip != 'true'
         run: |
