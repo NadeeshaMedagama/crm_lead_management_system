@@ -212,7 +212,7 @@ Frontend:
 ## Demo Video
 
 Add your video link here before submission (YouTube/Loom/Drive):
-- `Demo video: <your-link>`
+- `[Demo video](https://drive.google.com/file/d/1l03NZft4yxLpoNcqrVfzFj2KJJaV0n8b/view?usp=sharing)`
 
 ## Submission Checklist
 
