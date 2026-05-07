@@ -19,6 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Configure git identity
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "crm-release-bot"
+          git config user.email "crm-release-bot@users.noreply.github.com"
       - name: Create tag (manual trigger)
         if: github.event_name == 'workflow_dispatch'
         shell: bash
