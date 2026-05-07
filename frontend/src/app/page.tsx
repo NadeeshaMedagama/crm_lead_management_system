@@ -54,6 +54,7 @@ export default function Home() {
   const [stats, setStats] = useState<DashboardStats>(emptyStats);
   const [leadForm, setLeadForm] = useState(blankLead);
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
+  const [selectedLeadDates, setSelectedLeadDates] = useState<{ createdAt: string; updatedAt: string } | null>(null);
   const [noteText, setNoteText] = useState("");
   const [notes, setNotes] = useState<{ content: string; createdBy: string; createdAt: string }[]>([]);
   const [filters, setFilters] = useState<LeadFilters>({
@@ -117,6 +118,10 @@ export default function Home() {
     setAuthToken(null);
     setLeads([]);
     setStats(emptyStats);
+    setSelectedLead(null);
+    setSelectedLeadDates(null);
+    setNotes([]);
+    setNoteText("");
   };
 
   const handleSaveLead = async (event: FormEvent) => {
@@ -145,6 +150,7 @@ export default function Home() {
     });
     const detail = await getLeadDetail(lead._id);
     setNotes(detail.notes);
+    setSelectedLeadDates({ createdAt: detail.createdAt, updatedAt: detail.updatedAt });
   };
 
   const handleAddNote = async (event: FormEvent) => {
@@ -249,6 +255,7 @@ export default function Home() {
                   type="button"
                   onClick={() => {
                     setSelectedLead(null);
+                    setSelectedLeadDates(null);
                     setLeadForm(blankLead);
                     setNotes([]);
                   }}
@@ -264,15 +271,26 @@ export default function Home() {
             {selectedLead ? (
               <>
                 <p className="mb-2 text-sm text-slate-400">Selected: {selectedLead.leadName}</p>
+                {selectedLeadDates && (
+                  <p className="mb-3 text-xs text-slate-400">
+                    Created: {new Date(selectedLeadDates.createdAt).toLocaleString()} • Last Updated:{" "}
+                    {new Date(selectedLeadDates.updatedAt).toLocaleString()}
+                  </p>
+                )}
                 <form onSubmit={handleAddNote} className="mb-3 space-y-2">
                   <textarea className="w-full rounded-lg border border-slate-700 bg-slate-950 p-2" placeholder="Add note" value={noteText} onChange={(e) => setNoteText(e.target.value)} />
                   <button className="rounded-lg bg-emerald-600 px-3 py-2 text-white transition hover:bg-emerald-500">Add Note</button>
                 </form>
                 <div className="max-h-64 space-y-2 overflow-auto">
                   {notes.map((note) => (
-                    <div key={`${note.createdAt}-${note.content}`} className="rounded-lg border border-slate-700 bg-slate-950 p-2 text-sm">
-                      <p>{note.content}</p>
-                      <p className="text-xs text-slate-400">{note.createdBy}</p>
+                    <div
+                      key={`${note.createdAt}-${note.content}`}
+                      className="rounded-lg border border-slate-700 bg-slate-950 p-2 text-sm"
+                    >
+                      <p className="mb-1">{note.content}</p>
+                      <p className="text-xs text-slate-400">
+                        {note.createdBy} • {new Date(note.createdAt).toLocaleString()}
+                      </p>
                     </div>
                   ))}
                 </div>
