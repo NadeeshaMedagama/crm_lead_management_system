@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const config = require("./config");
 const authMiddleware = require("./middleware/auth");
 const authRoutes = require("./routes/auth");
 const leadsRoutes = require("./routes/leads");
@@ -7,7 +8,9 @@ const dashboardRoutes = require("./routes/dashboard");
 
 const app = express();
 
-app.use(cors());
+const corsOptions = config.frontendUrl ? { origin: config.frontendUrl } : undefined;
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/api/health", (_req, res) => {
