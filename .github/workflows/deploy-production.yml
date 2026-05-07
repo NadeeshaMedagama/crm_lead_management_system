@@ -7,11 +7,11 @@ on:
     types:
       - completed
   workflow_dispatch:
-    # inputs:
-    #   image_tag:
-    #     description: "Image tag to deploy (for example: v1.2.3)"
-    #     required: true
-    #     type: string
+    inputs:
+      image_tag:
+        description: "Image tag to deploy (for example: v1.2.3)"
+        required: true
+        type: string
 
 permissions:
   contents: read
