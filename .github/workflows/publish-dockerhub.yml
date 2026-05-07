@@ -34,7 +34,7 @@ jobs:
             type=raw,value=${{ env.IMAGE_TAG }}
             type=raw,value=latest
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./backend
           file: ./backend/Dockerfile
@@ -62,7 +62,7 @@ jobs:
             type=raw,value=${{ env.IMAGE_TAG }}
             type=raw,value=latest
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./frontend
           file: ./frontend/Dockerfile
