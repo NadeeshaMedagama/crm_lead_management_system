@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b9f2872-161e-4b0c-9e21-1605fbe39827" name="Changes" comment=".idea workspace xml file added">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6b9f2872-161e-4b0c-9e21-1605fbe39827" name="Changes" comment="fixed the frontend build TypeScript filter typing issue">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-production.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-production.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/publish-dockerhub.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/publish-dockerhub.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,27 +16,37 @@
   </component>
   <component name="CopilotPersistence">
     <persistenceIdMap>
+      <entry key="_/Users/nadeesha_medagama/Projects/crm-lead-management-system" value="3DNyntrWhdlIyUiefLRmMbBk0Ea" />
       <entry key="_/Users/nadeesha_medagama/Projects/crm-lead-management-system/.idea" value="3DKpsAnTOGzgH9YX8hHZ0VHYsxU" />
     </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedChatMode">
+    <option name="chatModeId" value="Agent" />
+  </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="chat-panel" value="GPT-5.2-Codex" />
+      <entry key="agent-panel" value="GPT-5.2-Codex" />
+    </selectedModels>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "NadeeshaMedagama"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NadeeshaMedagama&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/NadeeshaMedagama/crm_lead_management_system.git",
-    "accountId": "41daebd3-95c1-49df-aeec-276c08c94c30"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NadeeshaMedagama/crm_lead_management_system.git&quot;,
+    &quot;accountId&quot;: &quot;41daebd3-95c1-49df-aeec-276c08c94c30&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="3DKpsAnTOGzgH9YX8hHZ0VHYsxU" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -43,6 +55,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
@@ -56,6 +69,7 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Users/nadeesha_medagama/Projects/crm-lead-management-system/frontend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -98,8 +112,25 @@
       <option name="presentableId" value="Default" />
       <updated>1778040823328</updated>
       <workItem from="1778040824595" duration="1359000" />
+      <workItem from="1778136992309" duration="734000" />
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=".idea workspace xml file added">
+      <option name="closed" value="true" />
+      <created>1778137189634</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1778137189634</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed the frontend build TypeScript filter typing issue">
+      <option name="closed" value="true" />
+      <created>1778137211427</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1778137211427</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +140,8 @@
     <MESSAGE value=".idea copilot data migration xml file added" />
     <MESSAGE value=".idea vcs xml file added" />
     <MESSAGE value=".idea workspace xml file added" />
-    <option name="LAST_COMMIT_MESSAGE" value=".idea workspace xml file added" />
+    <MESSAGE value="fixed the frontend build TypeScript filter typing issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed the frontend build TypeScript filter typing issue" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
