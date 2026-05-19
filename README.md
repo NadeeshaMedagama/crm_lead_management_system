@@ -48,13 +48,40 @@ This application helps a small sales team manage leads through a pipeline:
 
 ```txt
 .
-├── backend
-│   ├── src
-│   └── tests
-├── frontend
-│   └── src
+├── action.yml
+├── docker-compose.yml
+├── package.json
+├── POSTMAN_CHECK_SUMMARY.md
 ├── README.md
-└── REFLECTION.md
+├── REFLECTION.md
+├── backend/
+│   ├── Dockerfile
+│   ├── jest.config.js
+│   ├── package.json
+│   ├── src/
+│   │   ├── app.js
+│   │   ├── config.js
+│   │   ├── db.js
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── seed.js
+│   │   └── server.js
+│   └── tests/
+├── frontend/
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── eslint.config.mjs
+│   ├── jest.config.js
+│   ├── next.config.ts
+│   ├── package.json
+│   ├── public/
+│   └── src/
+│       ├── app/
+│       ├── lib/
+│       └── types/
+└── .github/
+    └── workflows/
 ```
 
 ## Local Setup Instructions
@@ -185,7 +212,7 @@ Frontend:
 ## Demo Video
 
 Add your video link here before submission (YouTube/Loom/Drive):
-- `Demo video: <your-link>`
+- [Demo video](https://drive.google.com/file/d/1l03NZft4yxLpoNcqrVfzFj2KJJaV0n8b/view?usp=sharing)
 
 ## Submission Checklist
 

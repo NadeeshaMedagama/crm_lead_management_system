@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Tag to release (for example: v1.2.3)"
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -13,6 +19,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Configure git identity
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "crm-release-bot"
+          git config user.email "crm-release-bot@users.noreply.github.com"
+      - name: Create tag (manual trigger)
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        run: |
+          TAG="${{ inputs.tag_name }}"
+          TAG="${TAG#refs/tags/}"
+          TAG="$(echo "$TAG" | xargs)"
+
+          if [[ -z "$TAG" ]]; then
+            echo "Tag is empty. Provide a tag like v1.2.3." >&2
+            exit 1
+          fi
+
+          git fetch --force --tags
+
+          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
+            echo "Tag '$TAG' already exists."
+          else
+            git tag -a "$TAG" -m "Release $TAG"
+            git push origin "$TAG"
+          fi
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
-
+        with:
+          tag_name: ${{ github.event_name == 'workflow_dispatch' && inputs.tag_name || github.ref_name }}

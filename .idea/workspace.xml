@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b9f2872-161e-4b0c-9e21-1605fbe39827" name="Changes" comment="fixed the frontend build TypeScript filter typing issue">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-production.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-production.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/publish-dockerhub.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/publish-dockerhub.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="6b9f2872-161e-4b0c-9e21-1605fbe39827" name="Changes" comment="updated the repository tree to match the current workspace layout">
+      <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/routes/leads.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routes/leads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/tests/app.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/tests/app.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +116,7 @@
       <option name="presentableId" value="Default" />
       <updated>1778040823328</updated>
       <workItem from="1778040824595" duration="1359000" />
-      <workItem from="1778136992309" duration="734000" />
+      <workItem from="1778136992309" duration="19967000" />
     </task>
     <task id="LOCAL-00004" summary=".idea workspace xml file added">
       <option name="closed" value="true" />
@@ -130,7 +134,111 @@
       <option name="project" value="LOCAL" />
       <updated>1778137211427</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy">
+      <option name="closed" value="true" />
+      <created>1778137854559</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1778137854559</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy">
+      <option name="closed" value="true" />
+      <created>1778137892189</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1778137892189</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy">
+      <option name="closed" value="true" />
+      <created>1778137940991</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1778137940991</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy">
+      <option name="closed" value="true" />
+      <created>1778137995118</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1778137995118</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy">
+      <option name="closed" value="true" />
+      <created>1778138368392</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1778138368392</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fixed the workflow by adding the required pull-request-number input">
+      <option name="closed" value="true" />
+      <created>1778138633321</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1778138633321</updated>
+    </task>
+    <task id="LOCAL-00012" summary="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows">
+      <option name="closed" value="true" />
+      <created>1778140762176</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1778140762176</updated>
+    </task>
+    <task id="LOCAL-00013" summary="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows">
+      <option name="closed" value="true" />
+      <created>1778140770999</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1778140770999</updated>
+    </task>
+    <task id="LOCAL-00014" summary="updated the deploy workflow to sanitize the input tag and validate the env">
+      <option name="closed" value="true" />
+      <created>1778141208848</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1778141208848</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added a soft-fail manifest check that skips the deploy">
+      <option name="closed" value="true" />
+      <created>1778142949325</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1778142949325</updated>
+    </task>
+    <task id="LOCAL-00016" summary="updated the release workflow to create and push the tag when manually triggered">
+      <option name="closed" value="true" />
+      <created>1778143893952</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1778143893952</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added a configure git identity step gated">
+      <option name="closed" value="true" />
+      <created>1778144673147</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1778144673147</updated>
+    </task>
+    <task id="LOCAL-00018" summary="updated the repository tree to match the current workspace layout">
+      <option name="closed" value="true" />
+      <created>1778150268998</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1778150268998</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,7 +249,15 @@
     <MESSAGE value=".idea vcs xml file added" />
     <MESSAGE value=".idea workspace xml file added" />
     <MESSAGE value="fixed the frontend build TypeScript filter typing issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the frontend build TypeScript filter typing issue" />
+    <MESSAGE value="Updated the workflows so a manual publish always tags images with the exact tag plan to deploy" />
+    <MESSAGE value="fixed the workflow by adding the required pull-request-number input" />
+    <MESSAGE value="removed the NEXT_PUBLIC_API_BASE_URL build-arg from both publish workflows" />
+    <MESSAGE value="updated the deploy workflow to sanitize the input tag and validate the env" />
+    <MESSAGE value="added a soft-fail manifest check that skips the deploy" />
+    <MESSAGE value="updated the release workflow to create and push the tag when manually triggered" />
+    <MESSAGE value="added a configure git identity step gated" />
+    <MESSAGE value="updated the repository tree to match the current workspace layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated the repository tree to match the current workspace layout" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
